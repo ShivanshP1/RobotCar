@@ -1,0 +1,7 @@
+# Import Pin class
+from robot_hat import Pin
+
+# Create Pin object with numeric pin numbering and default input pullup enabled
+d0 = Pin(0, Pin.OUT)
+# Create Pin object with named pin numbering
+d0.high()
