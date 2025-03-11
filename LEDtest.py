@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 import time
-​
 # Use BCM numbering for the GPIO pins
 GPIO.setmode(GPIO.BCM)
 # Setup GPIO pin 18 as an output
