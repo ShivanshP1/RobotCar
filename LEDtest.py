@@ -1,15 +1,17 @@
 # Import Pin class
 import time
-from robot_hat import Pin
+from RPI.GPIO as GPIO
 
-# Create Pin object with numeric pin numbering and default input pullup enabled
-#d4 = Pin(2, Pin.OUT)
-d2 = Pin("D2")
-#d1 = Pin(1, Pin.OUT)
-# Create Pin object with named pin numbering
-#d1.low()
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(27, GPIO.out)
+
+print("LED test begin")
 for i in range(10):
-  d2.high()
+  GPIO.output(27, GPIO.LOW)
   time.sleep(1)
-  d2.low()
+  GPIO.output(27, GPIO.HIGH)
   time.sleep(1)
+#GPIO.cleanup()
+print("LED test end")
