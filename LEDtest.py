@@ -1,6 +1,6 @@
 # Import Pin class
 import time
-from RPI.GPIO as GPIO
+from RPi.GPIO as GPIO
 
 
 GPIO.setmode(GPIO.BCM)
