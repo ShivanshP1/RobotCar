@@ -1,19 +1,16 @@
-import RPi.GPIO as GPIO
+ 
+from robot_hat import Pin
 import time
-# Use BCM numbering for the GPIO pins
-GPIO.setmode(GPIO.BCM)
-# Setup GPIO pin 18 as an output
-#GPIO.setup(26, GPIO.OUT) for onboard LED
-GPIO.setup(17, GPIO.OUT)
-print("ass")
-try:
-    while True:
-        print("fuck")
-        GPIO.output(17, GPIO.HIGH) # Turn LED on
-        time.sleep(1)              # Wait 1 second
-        GPIO.output(17, GPIO.LOW)  # Turn LED off
-        time.sleep(1)              # Wait 1 second
-except KeyboardInterrupt:
-    pass
-finally:
-    GPIO.cleanup()   
+
+# Create Pin object with numeric pin numbering and default input pullup enabled
+d2 = Pin(17, Pin.OUT)
+#d1 = Pin(1, Pin.OUT)
+# d1 = Pin(1, Pin.OUT)
+# Create Pin object with named pin numbering
+#d1.low()
+# d1.low()
+for i in range(10):
+    d2.high()
+    time.sleep(1)
+    d2.low()
+    time.sleep(1)
