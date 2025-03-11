@@ -1,16 +1,11 @@
- 
 from robot_hat import Pin
 import time
 
-# Create Pin object with numeric pin numbering and default input pullup enabled
-d2 = Pin(17, Pin.OUT)
-#d1 = Pin(1, Pin.OUT)
-# d1 = Pin(1, Pin.OUT)
-# Create Pin object with named pin numbering
-#d1.low()
-# d1.low()
+# Create Pin object with gpio pin numbering and configured for output 
+d0 = Pin(17, Pin.OUT) #Digital 0  = GPIO 17
+
 for i in range(10):
-    d2.high()
+    d0.high()
     time.sleep(1)
-    d2.low()
+    d0.low()
     time.sleep(1)
