@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(27, GPIO.out)
+GPIO.setup(27, GPIO.OUT)
 
 print("LED test begin")
 for i in range(10):
