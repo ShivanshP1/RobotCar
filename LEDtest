@@ -3,12 +3,12 @@ import time
 from robot_hat import Pin
 
 # Create Pin object with numeric pin numbering and default input pullup enabled
-d0 = Pin(0, Pin.OUT)
+d2 = Pin(2, Pin.OUT)
 d1 = Pin(1, Pin.OUT)
 # Create Pin object with named pin numbering
 d1.high()
 for i in range(10):
-  d0.high()
+  d2.high()
   time.sleep(1)
-  d0.low()
+  d2.low()
   time.sleep(1)
