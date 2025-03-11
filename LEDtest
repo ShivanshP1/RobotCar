@@ -6,7 +6,7 @@ from robot_hat import Pin
 d2 = Pin(2, Pin.OUT)
 d1 = Pin(1, Pin.OUT)
 # Create Pin object with named pin numbering
-d1.high()
+d1.low()
 for i in range(10):
   d2.high()
   time.sleep(1)
