@@ -2,7 +2,7 @@
 from robot_hat import PWM
 
 # Create PWM object with numeric pin numbering and default input pullup enabled
-p0 = PWM(0)
+p0 = PWM(5)
 # Create PWM object with named pin numbering
 p1 = PWM('P1')
 
