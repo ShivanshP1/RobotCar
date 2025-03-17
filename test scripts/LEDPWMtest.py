@@ -2,7 +2,7 @@
 from robot_hat import PWM
 
 # Create PWM object with numeric pin numbering and default input pullup enabled
-p0 = PWM(0)
+p0 = PWM(24)
 # Create PWM object with named pin numbering
 p1 = PWM('P1')
 
@@ -17,7 +17,7 @@ print(f"Frequence: {p0.freq()} Hz")
 print(f"Prescaler: {p0.prescaler()}")
 print(f"Period: {p0.period()}")
 # Set pulse width to 50%
-p0.pulse_width_percent(50)
+p0.pulse_width_percent(100)
 
 # Or set prescaller and period, will get a frequency from:
 # frequency = PWM.CLOCK / prescaler / period
