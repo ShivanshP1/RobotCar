@@ -6,6 +6,7 @@ p0 = PWM(5)
 # Create PWM object with named pin numbering
 #p1 = PWM('P1')
 
+#penis
 
 # Set frequency will automatically set prescaller and period
 # This is easy for device like Buzzer or LED, which you care
