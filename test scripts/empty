@@ -1,1 +1,4 @@
 
+git fetch origin
+git merge origin/main
+sudo python3 {name of file}.py
