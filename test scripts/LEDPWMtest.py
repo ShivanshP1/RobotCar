@@ -4,7 +4,7 @@ from robot_hat import PWM
 # Create PWM object with numeric pin numbering and default input pullup enabled
 p0 = PWM(5)
 # Create PWM object with named pin numbering
-p1 = PWM('P1')
+p1 = PWM('P4')
 
 
 # Set frequency will automatically set prescaller and period
