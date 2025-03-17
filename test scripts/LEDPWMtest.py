@@ -25,6 +25,6 @@ p5.freq(1000)
 print(f"Frequence: {p5.freq()} Hz")
 print(f"Prescaler: {p5.prescaler()}")
 print(f"Period: {p5.period()}")
-p5.pulse_width_percent(200)
+p5.pulse_width_percent(100)
 
 
