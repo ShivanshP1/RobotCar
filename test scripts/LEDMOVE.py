@@ -7,6 +7,8 @@ from robot_hat import PWM
 # Create PWM object with numeric pin numbering and default input pullup enabled
 p4 = PWM(4)
 p5 = PWM(5)
+p6 = PWM(6)
+p7 = PWM(7)
 manual = '''
 Press keys on keyboard to control PiCar-X!
     w: Forward
@@ -45,6 +47,8 @@ if __name__ == "__main__":
                     print(f"Period: {p4.period()}")
                     p4.pulse_width_percent(100)
                     p5.pulse_width_percent(0)
+                    p6.pulse_width_percent(0)
+                    p7.pulse_width_percent(0)
 
                 elif 's' == key:
                     px.set_dir_servo_angle(0)
@@ -56,14 +60,33 @@ if __name__ == "__main__":
                     print(f"Period: {p5.period()}")
                     p5.pulse_width_percent(100)
                     p4.pulse_width_percent(0)
+                    p6.pulse_width_percent(0)
+                    p7.pulse_width_percent(0)
+
 
 
                 elif 'a' == key:
                     px.set_dir_servo_angle(-30)
                     px.forward(80)
+                     p6.freq(1000)
+                    print(f"Frequence: {p6.freq()} Hz")
+                    print(f"Prescaler: {p6.prescaler()}")
+                    print(f"Period: {p6.period()}")
+                    p6.pulse_width_percent(100)
+                    p4.pulse_width_percent(0)
+                    p5.pulse_width_percent(0)
+                    p7.pulse_width_percent(0)
                 elif 'd' == key:
                     px.set_dir_servo_angle(30)
                     px.forward(80)
+                     p7.freq(1000)
+                    print(f"Frequence: {p7.freq()} Hz")
+                    print(f"Prescaler: {p7.prescaler()}")
+                    print(f"Period: {p5.period()}")
+                    p7.pulse_width_percent(100)
+                    p4.pulse_width_percent(0)
+                    p6.pulse_width_percent(0)
+                    p5.pulse_width_percent(0)
                 elif 'i' == key:
                     tilt_angle+=5
                     if tilt_angle>30:
