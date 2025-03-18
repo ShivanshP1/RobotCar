@@ -68,7 +68,7 @@ if __name__ == "__main__":
                 elif 'a' == key:
                     px.set_dir_servo_angle(-30)
                     px.forward(80)
-                     p6.freq(1000)
+                    p6.freq(1000)
                     print(f"Frequence: {p6.freq()} Hz")
                     print(f"Prescaler: {p6.prescaler()}")
                     print(f"Period: {p6.period()}")
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                 elif 'd' == key:
                     px.set_dir_servo_angle(30)
                     px.forward(80)
-                     p7.freq(1000)
+                    p7.freq(1000)
                     print(f"Frequence: {p7.freq()} Hz")
                     print(f"Prescaler: {p7.prescaler()}")
                     print(f"Period: {p5.period()}")
