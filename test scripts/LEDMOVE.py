@@ -82,7 +82,7 @@ if __name__ == "__main__":
                     p7.freq(1000)
                     print(f"Frequence: {p7.freq()} Hz")
                     print(f"Prescaler: {p7.prescaler()}")
-                    print(f"Period: {p5.period()}")
+                    print(f"Period: {p7.period()}")
                     p7.pulse_width_percent(100)
                     p4.pulse_width_percent(0)
                     p6.pulse_width_percent(0)
