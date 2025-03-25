@@ -7,8 +7,8 @@ def main(src,dest,direcIndex):
 
     AstarPathFindingOld.main(src, dest)
     path = AstarPathFindingOld.path
-    print("path: \n", path)
-    print(path[1][0],path[0][0],path[1][0]-path[0][0])
+    #print("path: \n", path)
+    numTurns = 0
 
     for x in range(len(path[:])-1):
         #direc = direcList[direcIndex]
@@ -20,22 +20,28 @@ def main(src,dest,direcIndex):
         print("direction index", direcIndex)
         print("diff index", diffIndex)
         #print("direc:", direc)
+        
 
         if direcIndex == pathIndex[0]:
             print("move",x," fw")
+            numTurns = 0
         elif  3>= diffIndex >= 1 or -5>= diffIndex >=-7:
-            print("move",x," fw + left x",diffIndex)
+            numTurns = diffIndex % 4
+            print("move",x," fw + left x", numTurns)
             direcIndex = pathIndex[0]
 
         elif -3>= diffIndex <= -1 or 5>=diffIndex <= 7:
-            print("move",x," fw + right x", diffIndex)
+            numTurns = (diffIndex *-1)%4
+            print("move",x," fw + right x", numTurns )
             direcIndex = pathIndex[0]
         else:
-            print("wamp wamp")
+            x = x-1
+            direcIndex = (direcIndex+4)%8
+            print("wamp wamp, do a 180")
 
 
 if __name__ == "__main__":
-    src= [2,47]
-    dest = [49 , 4]
-    direcIndex = 6# y,x / n= -1, e=1,s=1,w=-1, orthoganal = 0
-    main(src,dest,direcIndex)
+    src = [2, 62]
+    dest = [30, 2]
+    initialDirecIndex = 6
+    main(src,dest,initialDirecIndex)
