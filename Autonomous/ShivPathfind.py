@@ -1,7 +1,7 @@
 import numpy as np
 import math
 import heapq
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 class Cell:
@@ -151,35 +151,35 @@ def a_star_search(grid, src, dest):
     return None
 
 
-def visualize_path(grid, path):
-    """Create a matplotlib visualization of the path"""
-    plt.figure(figsize=(12, 12))
+# def visualize_path(grid, path):
+#     """Create a matplotlib visualization of the path"""
+#     plt.figure(figsize=(12, 12))
 
-    # Create colormap: black for 0 (open), white for 1 (blocked)
-    cmap = plt.cm.colors.ListedColormap(['black', 'white'])
-    plt.imshow(grid, cmap=cmap, interpolation='none')
+#     # Create colormap: black for 0 (open), white for 1 (blocked)
+#     cmap = plt.cm.colors.ListedColormap(['black', 'white'])
+#     plt.imshow(grid, cmap=cmap, interpolation='none')
 
-    if path:
-        # Extract coordinates (note matplotlib uses (x,y) = (col,row))
-        y_coords = [coord[0] for coord in path]
-        x_coords = [coord[1] for coord in path]
+#     if path:
+#         # Extract coordinates (note matplotlib uses (x,y) = (col,row))
+#         y_coords = [coord[0] for coord in path]
+#         x_coords = [coord[1] for coord in path]
 
-        # Plot path
-        plt.scatter(x_coords, y_coords, color='yellow', s=100, marker='s',
-                    edgecolor='red', linewidth=1, label='Path')
-        plt.plot(x_coords, y_coords, 'r-', linewidth=2, alpha=0.5)
+#         # Plot path
+#         plt.scatter(x_coords, y_coords, color='yellow', s=100, marker='s',
+#                     edgecolor='red', linewidth=1, label='Path')
+#         plt.plot(x_coords, y_coords, 'r-', linewidth=2, alpha=0.5)
 
-        # Mark start and end
-        plt.scatter(x_coords[0], y_coords[0], color='lime', s=150,
-                    marker='o', edgecolor='black', linewidth=2, label='Start')
-        plt.scatter(x_coords[-1], y_coords[-1], color='magenta', s=150,
-                    marker='X', edgecolor='black', linewidth=2, label='End')
+#         # Mark start and end
+#         plt.scatter(x_coords[0], y_coords[0], color='lime', s=150,
+#                     marker='o', edgecolor='black', linewidth=2, label='Start')
+#         plt.scatter(x_coords[-1], y_coords[-1], color='magenta', s=150,
+#                     marker='X', edgecolor='black', linewidth=2, label='End')
 
-    plt.axis('off')
-    plt.title('A* Pathfinding Visualization (0s = traversable)', pad=20)
-    plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1.15))
-    plt.tight_layout()
-    plt.show()
+#     plt.axis('off')
+#     plt.title('A* Pathfinding Visualization (0s = traversable)', pad=20)
+#     plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1.15))
+#     plt.tight_layout()
+#     plt.show()
 
 
 def main(src,dest):
@@ -193,7 +193,7 @@ def main(src,dest):
 
 
     # Visualization flag
-    show_visualization = True  # Set to False to disable visualization
+    #show_visualization = True  # Set to False to disable visualization
 
     # ====== MAIN EXECUTION ======
     print("A* Pathfinding on Grid Map\n" + "=" * 30)
