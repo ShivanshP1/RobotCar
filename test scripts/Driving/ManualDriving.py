@@ -29,11 +29,13 @@ if __name__ == "__main__":
             key = readchar.readkey()
             key = key.lower()
             
-            if key in ('wsadik'):
+            if key in ('wsadxik'):
                 if 'w' == key:
                     px.forward(speed)
                 elif 's' == key:   
                     px.forward(0)
+                elif 'x' == key:
+                    px.forward(-speed)
                 elif 'i' == key:
                     speed = min(100, speed + 10)  # limit max speed
                 elif 'k' == key:
