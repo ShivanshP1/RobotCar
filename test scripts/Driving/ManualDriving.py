@@ -40,7 +40,7 @@ if __name__ == "__main__":
                 elif 'x' == key:
                     px.forward(-speed)
                 elif 'i' == key:
-                    speed = min(1000, speed + 10)  # limit max speed
+                    speed = min(100, speed + 10)  # limit max speed
                 elif 'k' == key:
                     speed = max(0, speed - 10)  # prevent negative speed
                 elif 'd' == key:
