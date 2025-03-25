@@ -1,11 +1,11 @@
 import cv2
-import time
 from ultralytics import YOLO
 
-USE_FPS_COUNTER = True  # Set to False to disable FPS counter
+USE_FPS_COUNTER = False  # Set to False to disable FPS counter
 MODEL_TYPE = "yolov8n.pt"  # Use "yolov8n.pt" for a smaller model (YOLOv8 nano)
 
-STOP_SIGN_LABEL = 9  # Label for stop sign, adjust according to your model
+STOP_SIGN_LABEL = 11  # Label for stop sign, adjust according to your model
+CONFIDENCE_THRESHOLD = 0.92  # Minimum confidence to consider a detection valid
 FOCAL_LENGTH = 500  # Example focal length (in pixels), you may need to calibrate this
 REAL_OBJECT_WIDTH = 0.06  # Actual width of the stop sign (in meters)
 
@@ -14,14 +14,6 @@ def detect_objects(image):
     results = model(image)  # Call the model to detect objects
     return results
 
-def display_fps(frame, prev_time):
-    """Calculate and display FPS on the frame."""
-    curr_time = time.time()
-    fps = 1 / (curr_time - prev_time)
-    cv2.putText(frame, f"FPS: {int(fps)}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    return curr_time
-
-# ==================== Main Program ====================
 if __name__ == "__main__":
     # Suppress the ultralytics' logger output
     import logging
@@ -41,12 +33,17 @@ if __name__ == "__main__":
         # Perform object detection
         results = detect_objects(frame)
 
-        # Display FPS if enabled
-        if USE_FPS_COUNTER:
-            prev_time = display_fps(frame, prev_time)
-
-
+        # Check each result for stop signs
         for result in results:
+            # Get class IDs and confidences from the detection results
+            class_ids = result.boxes.cls
+            confidences = result.boxes.conf
+            
+            # Check each detection
+            for class_id, confidence in zip(class_ids, confidences):
+                if class_id == STOP_SIGN_LABEL and confidence > CONFIDENCE_THRESHOLD:
+                    print(f"Stop sign detected with confidence: {confidence:.2f}")
+                
             annotated_frame = result.plot()  
             cv2.imshow("YOLOv8 Object Detection", annotated_frame)
 
