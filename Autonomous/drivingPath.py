@@ -1,4 +1,4 @@
-#import AstarPathFinding
+import AstarPathFinding
 import ShivPathfind
 import numpy as np
 
@@ -14,7 +14,7 @@ def driving(src,dest,direcIndex):
 
     # print("path: \n", path)
     x =0
-    while x < len(path[:])-1:
+    while x < np.size(path,0) -1:
         diffPath = path[x + 1] - path[x]
         pathIndex = np.intersect1d(np.where(direcList[:, 0] == diffPath[0]), np.where(direcList[:, 1] == diffPath[1]))
         diffIndex = direcIndex-pathIndex[0]
