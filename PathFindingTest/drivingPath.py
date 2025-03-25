@@ -1,12 +1,12 @@
-import AstarPathFinding
+import AstarPathFindingOld
 import numpy as np
 
 
 direcList = np.vstack(([-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]))
 def main(src,dest,direcIndex):
 
-    AstarPathFinding.main(src, dest)
-    path = AstarPathFinding.path
+    AstarPathFindingOld.main(src, dest)
+    path = AstarPathFindingOld.path
     print("path: \n", path)
     print(path[1][0],path[0][0],path[1][0]-path[0][0])
 
