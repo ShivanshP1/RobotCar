@@ -16,9 +16,6 @@ y = mapArr
 #mapArr = np.array(x, ndmin=1)
 
 
-# Define the size of the grid
-ROW = 53
-
 
 while y[0] != 53:
     x = f.readline()
