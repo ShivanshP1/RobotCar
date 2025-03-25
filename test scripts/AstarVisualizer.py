@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-import pathFinding
+import AstarPathFinding
 
 
 def read_data(filename):
@@ -66,8 +66,9 @@ filename = 'Resizedquackmap_pooled_3x3.txt'
 data = read_data(filename)
 
 # The path coordinates (row, column) from your message
-
-AstarPathFinding.main()
+src = [2,47]
+dest = [49,4]
+AstarPathFinding.main(src,dest)
 path_coords = AstarPathFinding.path
 print(path_coords)
 
