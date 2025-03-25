@@ -2,7 +2,8 @@ from picarx import Picarx
 from time import sleep
 import readchar
 
-manual = '''
+def get_manual(speed, angle):
+    return f'''
 Press keys on keyboard to control PiCar-X!
     w: Forward
     a: Turn left
@@ -10,37 +11,12 @@ Press keys on keyboard to control PiCar-X!
     d: Turn right
     i: Accelerate
     k: Decelerate
-    speed: {speed}
-    angle: {angle}
     ctrl+c: Press twice to exit the program
 '''
 
-def leftTurn():
-    angle = angle - 10
-    
-
-def rightTurn():
-    angle = angle + 10
-
-def straight():
-    angle = 0
-
-def forward():
-    px.forward(speed)
-
-def accelerate():
-    speed = speed + 10
-
-def decelerate():
-     speed = speed + 10
-
-def stop():
-    px.forward(0)
-
-def show_info():
-    print("\033[H\033[J",end='')  # clear terminal windows
-    print(manual)
-
+def show_info(speed, angle):
+    print("\033[H\033[J", end='')  # clear terminal windows
+    print(get_manual(speed, angle))
 
 if __name__ == "__main__":
     try:
@@ -48,33 +24,31 @@ if __name__ == "__main__":
         angle = 0
         px = Picarx()
         
-        show_info()
+        show_info(speed, angle)
         while True:
             key = readchar.readkey()
             key = key.lower()
-            if key in('wsadikjl'): 
+            
+            if key in ('wsadik'):
                 if 'w' == key:
-                    forward()
-                if 's' == key:   
-                    stop()
-                if 'j' == key:
-                    accelerate()
-                if 'k' == key:
-                    decelerate()
-                if 'd' == key:
-                    rightTurn()
+                    px.forward(speed)
+                elif 's' == key:   
+                    px.forward(0)
+                elif 'i' == key:
+                    speed = min(100, speed + 10)  # limit max speed
+                elif 'k' == key:
+                    speed = max(0, speed - 10)  # prevent negative speed
+                elif 'd' == key:
+                    angle = min(40, angle + 10)  # limit right turn
                 elif 'a' == key:
-                    leftTurn()
-                else:
-                    straight()
-     
-                show_info()                     
-                sleep(0.5)
+                    angle = max(-40, angle - 10)  # limit left turn
+                
                 px.set_dir_servo_angle(angle)
-                px.forward(0)
+                show_info(speed, angle)
+                sleep(0.1)
           
             elif key == readchar.key.CTRL_C:
-                print("\n Quit")
+                print("\nQuit")
                 break
 
     finally:
