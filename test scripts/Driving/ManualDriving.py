@@ -7,10 +7,13 @@ def get_manual(speed, angle):
 Press keys on keyboard to control PiCar-X!
     w: Forward
     a: Turn left
-    s: Backward
+    s: Stop
+    x: Backward
     d: Turn right
     i: Accelerate
     k: Decelerate
+    Current speed: {speed}
+    Current angle: {angle}
     ctrl+c: Press twice to exit the program
 '''
 
