@@ -24,18 +24,12 @@ while y[0] != 53:
 
 mapArr = np.delete(mapArr, 0, 1)
 
-print(mapArr)
+#print(mapArr)
 
-#function that gets coords
-#start = np.array((2,2),dtype=int)
-#print("start:", start)
-#$path = np.array(start)
 
-# Python program for A* Search Algorithm
 
-# Define the Cell class
 #######################################################################
-
+# Define the Cell class
 class Cell:
     def __init__(self):
       # Parent cell's row index
@@ -77,30 +71,35 @@ def calculate_h_value(row, col, dest):
 
 # Trace the path from source to destination
 
-
+path = np.empty
 def trace_path(cell_details, dest):
-    print("The Path is ")
-    path = []
+    #print("The Path is ")
+    #path = []
+    global path
     row = dest[0]
     col = dest[1]
 
+    path = np.copy(dest)
     # Trace the path from destination to source using parent cells
     while not (cell_details[row][col].parent_i == row and cell_details[row][col].parent_j == col):
-        path.append((row, col))
+        #path = np.concatenate(path,[row, col], axis=0)
+        #path = np.concatenate((path,[row,col]),axis=0)
+        path = np.vstack((path, [row,col]))
         temp_row = cell_details[row][col].parent_i
         temp_col = cell_details[row][col].parent_j
         row = temp_row
         col = temp_col
 
     # Add the source cell to the path
-    path.append((row, col))
+    path = np.vstack((path, [row,col]))
     # Reverse the path to get the path from source to destination
-    path.reverse()
+    path = np.delete(path, 0,0)
+    path = np.flip(path,axis=0)
 
     # Print the path
-    for i in path:
-        print("->", i, end=" ")
-    print()
+    # for i in path:
+    #     print("->", i, end=" ")
+    # print()
 
 # Implement the A* search algorithm
 
@@ -194,22 +193,27 @@ def a_star_search(grid, src, dest):
 
 # Driver Code
 
-
-def main():
+#path = []
+def main(src,dest):
     # Define the grid (1 for unblocked, 0 for blocked)
     grid = mapArr
-    print(mapArr[50, 63])
-    print((mapArr[3,2]))
+
     # print(mapArr[50,:])
     # print(y)
     # print(len(y))
     # Define the source and destination
-    src = [3, 2]
-    dest = [50, 63]
-    
+
+    # y,x
+    # src = [2,47]
+    # dest = [49,4]
+    print("src value on map: ",mapArr[src[0],src[1]])
+    print("dest value on map: ",mapArr[dest[0],dest[1]])
+
     # Run the A* search algorithm
     a_star_search(grid, src, dest)
 
 
 if __name__ == "__main__":
-    main()
+    src= [2,3]
+    dest = [4 , 47]
+    main(src,dest)
