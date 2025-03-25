@@ -23,7 +23,7 @@ def main(src,dest,direcIndex):
             moveList.append("f")
             print("move",x," fw")
             numTurns = 0
-        elif  (diffIndex<=2 and direcIndex >= 1) or (diffIndex<= -6 and direcIndex >=-7):
+        elif  diffIndex ==2 or diffIndex == 1 or diffIndex == -6 or direcIndex ==-7:
             numTurns = diffIndex % 4
             if numTurns == 1:
                 moveList.append("l")
@@ -32,7 +32,7 @@ def main(src,dest,direcIndex):
             print("move",x," fw + left x", numTurns)
             direcIndex = pathIndex[0]
 
-        elif (diffIndex <= -2 and direcIndex <= -1) or (diffIndex >= 6 and direcIndex <= 7):
+        elif diffIndex == -2 or diffIndex == -1 or diffIndex == 6 or direcIndex == 7:
             numTurns = (diffIndex *-1)%4
             if numTurns == 1:
                 moveList.append("r")
@@ -45,12 +45,15 @@ def main(src,dest,direcIndex):
             moveList.append("s")
             print("move",x,"wamp wamp, do a 180")
             x = x - 1
+
+        if len(moveList) > len(path[:]):
+            print("error: movement list exceeds path node list")
         x = x + 1
     print("\nStop\n")
 
 if __name__ == "__main__":
     src = [2, 62]
     dest = [30, 2]
-    initialDirecIndex = 0
+    initialDirecIndex = 2
     main(src,dest,initialDirecIndex)
     print(moveList)
