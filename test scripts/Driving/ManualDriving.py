@@ -14,17 +14,13 @@ Press keys on keyboard to control PiCar-X!
     ctrl+c: Press twice to exit the program
 '''
 
-def leftTurnS():
+def leftTurn():
     px.set_dir_servo_angle(-10)
 
-def leftTurnM():
-    px.set_dir_servo_angle(-30)
+def rightTurn():
+    px.set_dir_servo_angle(40)
 
-def rightTurnS():
-    px.set_dir_servo_angle(10)
 
-def rightTurnM():
-    px.set_dir_servo_angle(30)
 
 
 def straight():
@@ -66,9 +62,9 @@ if __name__ == "__main__":
                 if 'k' == key:
                     decelerate()
                 if 'd' == key:
-                    rightTurnS()
+                    rightTurn()
                 elif 'a' == key:
-                    leftTurnM()
+                    leftTurn()
                 else:
                     straight()
      
