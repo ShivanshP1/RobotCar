@@ -9,9 +9,8 @@ Press keys on keyboard to control PiCar-X!
     s: Backward
     d: Turn right
     i: Accelerate
-    k: Head down
-    j: Turn head left
-    l: Turn head right
+    k: Decelerate
+    speed: {speed}
     ctrl+c: Press twice to exit the program
 '''
 
@@ -21,17 +20,12 @@ def leftTurnS():
 def leftTurnM():
     px.set_dir_servo_angle(-30)
 
-def leftTurnL():
-    px.set_dir_servo_angle(-50)
-
 def rightTurnS():
     px.set_dir_servo_angle(10)
 
 def rightTurnM():
     px.set_dir_servo_angle(30)
 
-def rightTurnL():
-    px.set_dir_servo_angle(50)
 
 def straight():
     px.set_dir_servo_angle(0)
@@ -65,18 +59,18 @@ if __name__ == "__main__":
             if key in('wsadikjl'): 
                 if 'w' == key:
                     forward()
-                elif 's' == key:   
+                if 's' == key:   
                     stop()
-                if 'd' == key:
-                    rightTurnM()
-                elif 'a' == key:
-                    leftTurnL()
-                else:
-                    straight()
                 if 'j' == key:
                     accelerate()
-                elif 'k' == key:
+                if 'k' == key:
                     decelerate()
+                if 'd' == key:
+                    rightTurnS()
+                elif 'a' == key:
+                    leftTurnM()
+                else:
+                    straight()
      
                 show_info()                     
                 sleep(0.5)
