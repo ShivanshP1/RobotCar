@@ -11,26 +11,25 @@ Press keys on keyboard to control PiCar-X!
     i: Accelerate
     k: Decelerate
     speed: {speed}
+    angle: {angle}
     ctrl+c: Press twice to exit the program
 '''
 
 def leftTurn():
-    px.set_dir_servo_angle(-10)
+    angle = angle - 10
+    
 
 def rightTurn():
-    px.set_dir_servo_angle(40)
-
-
-
+    angle = angle + 10
 
 def straight():
-    px.set_dir_servo_angle(0)
+    angle = 0
 
 def forward():
-     px.forward(speed)
+    px.forward(speed)
 
 def accelerate():
-     speed = speed + 10
+    speed = speed + 10
 
 def decelerate():
      speed = speed + 10
@@ -46,6 +45,7 @@ def show_info():
 if __name__ == "__main__":
     try:
         speed = 80
+        angle = 0
         px = Picarx()
         
         show_info()
@@ -70,6 +70,7 @@ if __name__ == "__main__":
      
                 show_info()                     
                 sleep(0.5)
+                px.set_dir_servo_angle(angle)
                 px.forward(0)
           
             elif key == readchar.key.CTRL_C:
