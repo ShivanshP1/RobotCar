@@ -4,25 +4,24 @@ import readchar
 import drivingPath
 
 
-def get_manual(speed, angle):
-    return f'''
-Press keys on keyboard to control PiCar-X!
-    w: Forward
-    a: Turn left
-    s: Stop
-    x: Backward
-    d: Turn right
-    i: Accelerate
-    k: Decelerate
-    Current speed: {speed}
-    Current angle: {angle}
-    ctrl+c: Press twice to exit the program
-'''
+
+# Press keys on keyboard to control PiCar-X!
+#     w: Forward
+#     a: Turn left
+#     s: Stop
+#     x: Backward
+#     d: Turn right
+#     i: Accelerate
+#     k: Decelerate
+#     Current speed: {speed}
+#     Current angle: {angle}
+#     ctrl+c: Press twice to exit the program
 
 
-def show_info(speed, angle):
-    print("\033[H\033[J", end='')  # clear terminal windows
-    print(get_manual(speed, angle))
+
+# def show_info(speed, angle):
+#     print("\033[H\033[J", end='')  # clear terminal windows
+#     print(get_manual(speed, angle))
 
 
 if __name__ == "__main__":
@@ -31,8 +30,13 @@ if __name__ == "__main__":
         angle = 0
         px = Picarx()
 
-        show_info(speed, angle)
+        #show_info(speed, angle)
+        src = [29, 129]  # Starting position (row, column)
+        dest = [284, 393]  # Destination position
+        initialDirecIndex = 2
+        drivingPath.driving(src, dest, initialDirecIndex)
         path = drivingPath.moveList
+        print(path)
         key = path.pop(0)
         while True:
             print(key)
@@ -54,7 +58,7 @@ if __name__ == "__main__":
 
             key = path.pop(0)
             px.set_dir_servo_angle(angle)
-            show_info(speed, angle)
+            # show_info(speed, angle)
             sleep(0.5)
 
 
