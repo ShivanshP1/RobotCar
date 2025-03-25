@@ -23,7 +23,7 @@ def main(src,dest,direcIndex):
             moveList.append("f")
             print("move",x," fw")
             numTurns = 0
-        elif  2>= diffIndex >= 1 or -6>= diffIndex >=-7:
+        elif  (diffIndex<=2 and direcIndex >= 1) or (diffIndex<= -6 and direcIndex >=-7):
             numTurns = diffIndex % 4
             if numTurns == 1:
                 moveList.append("l")
@@ -32,7 +32,7 @@ def main(src,dest,direcIndex):
             print("move",x," fw + left x", numTurns)
             direcIndex = pathIndex[0]
 
-        elif -2>= diffIndex <= -1 or 6>=diffIndex <= 7:
+        elif (diffIndex <= -2 and direcIndex <= -1) or (diffIndex >= 6 and direcIndex <= 7):
             numTurns = (diffIndex *-1)%4
             if numTurns == 1:
                 moveList.append("r")
@@ -51,6 +51,6 @@ def main(src,dest,direcIndex):
 if __name__ == "__main__":
     src = [2, 62]
     dest = [30, 2]
-    initialDirecIndex = 6
+    initialDirecIndex = 0
     main(src,dest,initialDirecIndex)
     print(moveList)
