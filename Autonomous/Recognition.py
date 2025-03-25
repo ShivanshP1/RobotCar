@@ -9,17 +9,12 @@ CONFIDENCE_THRESHOLD = 0.92  # Minimum confidence to consider a detection valid
 FOCAL_LENGTH = 500  # Example focal length (in pixels), you may need to calibrate this
 REAL_OBJECT_WIDTH = 0.06  # Actual width of the stop sign (in meters)
 
-def detect_objects(image):
+def detect_objects(image, model):
     """Perform object detection on the input image."""
     results = model(image)  # Call the model to detect objects
     return results
 
-if __name__ == "__main__":
-    # Suppress the ultralytics' logger output
-    import logging
-    logging.getLogger("ultralytics").setLevel(logging.ERROR)
-
-    # Load the YOLOv8 model (small version for faster detection)
+def runModel():
     model = YOLO(MODEL_TYPE)
 
     cap = cv2.VideoCapture(0)
@@ -29,9 +24,8 @@ if __name__ == "__main__":
         ret, frame = cap.read()
         if not ret:
             break
-
         # Perform object detection
-        results = detect_objects(frame)
+        results = detect_objects(frame,model)
 
         # Check each result for stop signs
         for result in results:
@@ -46,10 +40,12 @@ if __name__ == "__main__":
                 
             annotated_frame = result.plot()  
             cv2.imshow("YOLOv8 Object Detection", annotated_frame)
-
-        # Exit on 'q' key press
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
     cap.release()
     cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    runModel()
+        

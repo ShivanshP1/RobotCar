@@ -23,7 +23,7 @@ mapArr = np.delete(mapArr, 0, 1)
 
 #print(mapArr)
 
-
+    
 
 #######################################################################
 # Define the Cell class
