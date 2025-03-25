@@ -3,47 +3,33 @@ import numpy as np
 
 
 direcList = np.vstack(([-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]))
-
-
-
 def main(src,dest,direcIndex):
 
     AstarPathFinding.main(src, dest)
     path = AstarPathFinding.path
-
     print("path: \n", path)
     print(path[1][0],path[0][0],path[1][0]-path[0][0])
 
-
-
-
     for x in range(len(path[:])-1):
-        direc = direcList[direcIndex]
+        #direc = direcList[direcIndex]
         diffPath = path[x + 1] - path[x]
         pathIndex = np.intersect1d(np.where(direcList[:, 0] == diffPath[0]), np.where(direcList[:, 1] == diffPath[1]))
         diffIndex = direcIndex-pathIndex[0]
-        print("\ndiff path", diffPath )
-        print("path index",pathIndex[0])
-        print("diff index", diffIndex)
+        #print("\ndiff path", diffPath )
+        print("\npath index",pathIndex[0])
         print("direction index", direcIndex)
-        print("direc:", direc)
+        print("diff index", diffIndex)
+        #print("direc:", direc)
 
         if direcIndex == pathIndex[0]:
-        #if (direc[1] == path[x+1][1] - path[x][1] ^ direc[0] == path[x+1][0] - path[x][0]) or (direc[1] == path[x+1][1] - path[x][1] and direc[0] == path[x+1][0] - path[x][0]):
-            #GO forward
             print("move",x," fw")
         elif  3>= diffIndex >= 1 or -5>= diffIndex >=-7:
-        #elif (direc[1] == (path[x+1][1] - path[x][1]) and ((path[x+1][0] - path[x][0])>0)) or (direc[0] == (path[x+1][0] - path[x][0]) and ((path[x+1][1] - path[x][1])<=0)):
-            #left
-            print("move",x," fw + left")
-            direcIndex = pathIndex[0]#(direcIndex - diffIndex)%8
+            print("move",x," fw + left x",diffIndex)
+            direcIndex = pathIndex[0]
 
         elif -3>= diffIndex <= -1 or 5>=diffIndex <= 7:
-        #elif (direc[1] == (path[x+1][1] - path[x][1]) and ((path[x+1][1] - path[x][1]) < 0)) or (direc[0] == (path[x+1][0] - path[x][0]) and ((path[x+1][0] - path[x][0])>0)):
-            #right
-            print("move",x," fw + right")
-            direc = direcList[direcIndex]
-            direcIndex = pathIndex[0]#(direcIndex + 1) % 8
+            print("move",x," fw + right x", diffIndex)
+            direcIndex = pathIndex[0]
         else:
             print("wamp wamp")
 
