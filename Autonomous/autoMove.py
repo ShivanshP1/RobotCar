@@ -35,7 +35,7 @@ if __name__ == "__main__":
         path = drivingPath.moveList
         key = path.pop(0)
         while True:
-
+            print(key)
 
             if 'f' == key:
                 px.forward(speed)
@@ -55,7 +55,7 @@ if __name__ == "__main__":
             key = path.pop(0)
             px.set_dir_servo_angle(angle)
             show_info(speed, angle)
-            sleep(0.1)
+            sleep(0.5)
 
 
     finally:
