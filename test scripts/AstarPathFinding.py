@@ -2,8 +2,12 @@ import numpy as np
 import math
 import heapq
 
+
 f = open("Resizedquackmap_pooled_3x3.txt", "r")
 x = f.readline()
+x = x.replace("   ", "")
+COL=len(x)
+ROW = math.ceil(COL/1.25)
 x = f.readline()
 x = x.replace("   ", " ")
 mapArr = np.fromstring(x, int, sep=' ')
@@ -14,7 +18,7 @@ y = mapArr
 
 # Define the size of the grid
 ROW = 53
-COL = 65
+
 
 while y[0] != 53:
     x = f.readline()
