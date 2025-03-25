@@ -1,14 +1,18 @@
 import AstarPathFinding
+import ShivPathfind
 import numpy as np
 
 
 direcList = np.vstack(([-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]))
 moveList = []
-def main(src,dest,direcIndex):
+def driving(src,dest,direcIndex):
 
-    AstarPathFinding.main(src, dest)
-    path = AstarPathFinding.path
-    #print("path: \n", path)
+    # AstarPathFinding.main(src, dest)
+    # path = AstarPathFinding.path
+    ShivPathfind.main(src,dest)
+    path = ShivPathfind.pathOut
+
+    # print("path: \n", path)
     x =0
     while x < len(path[:])-1:
         diffPath = path[x + 1] - path[x]
@@ -52,8 +56,8 @@ def main(src,dest,direcIndex):
     print("\nStop\n")
 
 if __name__ == "__main__":
-    src = [2, 62]
-    dest = [30, 2]
+    src = [29, 129]  # Starting position (row, column)
+    dest = [284, 393]  # Destination position
     initialDirecIndex = 2
-    main(src,dest,initialDirecIndex)
+    driving(src,dest,initialDirecIndex)
     print(moveList)
