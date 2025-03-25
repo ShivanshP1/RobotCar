@@ -122,8 +122,8 @@ def main():
         coordinates,
         highlight_color='blue',
         font_size=18,
-        x_scale_factor=1.05,
-        y_scale_factor=1.05
+        x_scale_factor=1.00,
+        y_scale_factor=1.00
     )
 
 if __name__ == "__main__":

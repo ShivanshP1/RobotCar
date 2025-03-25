@@ -106,6 +106,6 @@ def pool_bitmap(pixels, width, height, pool_size):
 
 # Example usage:
 resize_image('MapR.png', 'ResizedMap.png', 
-             max_width=960, 
+             max_width=1000, 
              pool_size=2, 
              rotation_degrees=270)  # Rotate 270° clockwise
