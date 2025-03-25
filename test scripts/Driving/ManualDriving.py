@@ -70,7 +70,7 @@ if __name__ == "__main__":
                 if 'd' == key:
                     rightTurnM()
                 elif 'a' == key:
-                    leftTurnM()
+                    leftTurnL()
                 else:
                     straight()
                 if 'j' == key:
